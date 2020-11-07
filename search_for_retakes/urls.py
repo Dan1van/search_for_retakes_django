@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('search-retake/', include('search_retake.urls')),
+    path('chaining/', include('smart_selects.urls')),
 ]
 
 urlpatterns += [
