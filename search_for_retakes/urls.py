@@ -14,7 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from django.conf.urls import url, include
 from django.views.generic import RedirectView
 
 from django.conf import settings
@@ -23,7 +24,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('search-retake/', include('search_retake.urls')),
+    url(r'^search-retake/', include(('search_retake.urls', 'search_retake'), namespace='search_retake')),
     path('chaining/', include('smart_selects.urls')),
 ]
 

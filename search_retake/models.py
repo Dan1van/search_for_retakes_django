@@ -5,14 +5,14 @@ from smart_selects.db_fields import ChainedForeignKey
 
 
 class Group(models.Model):
-    _COURSE_CHOICES = (
+    COURSE_CHOICES = [
         (1, '1 курс'),
         (2, '2 курс'),
         (3, '3 курс'),
-        (4, '4 курс')
-    )
+        (4, '4 курс'),
+    ]
 
-    course = models.IntegerField(choices=_COURSE_CHOICES, verbose_name='Курс', help_text='Выберите курс')
+    course = models.IntegerField(choices=COURSE_CHOICES, verbose_name='Курс', help_text='Выберите курс')
     name = models.CharField(max_length=100, verbose_name='Название', help_text='Введите группу', unique=True)
 
     def __str__(self):
@@ -25,7 +25,7 @@ class Teacher(models.Model):
     last_name = models.CharField(max_length=100, verbose_name='Фамилия', help_text='Введите фамилию преподавателя')
 
     def __str__(self):
-        return f'{self.last_name} {self.name[0]}. {self.fathers_name[0]}.'
+        return f'{self.last_name} {self.name[0]}.{self.fathers_name[0]}.'
 
     def display_discipline(self):
         return ', '.join([discipline.name for discipline in self.disciplines.all()])
@@ -78,4 +78,4 @@ class Retake(models.Model):
     date = models.DateTimeField(verbose_name='Дата', help_text='Введите дату пересдачи')
 
     def __str__(self):
-        return f'{self.discipline.name}, {self.group.name}'
+        return f'{self.discipline.name}, {self.group.name}, {self.date}'

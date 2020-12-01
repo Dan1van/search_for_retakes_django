@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'smart_selects',
-    'search_retake.apps.SearchRetakeConfig'
+    'search_retake.apps.SearchRetakeConfig',
+    'rest_framework',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

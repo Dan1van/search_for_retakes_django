@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <header class="text-center">
+        <h1 class="h1">Поиск пересдач</h1>
+    </header>
+    <main class="container">
+        <form id="FindRetakesForm" method="GET" action="">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="discipline">Дисциплина</label>
+                    <select class="form-control" name="discipline" id="discipline"
+                    url = "{% url 'search_retake:get_disciplines' %}">
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="teacher">Преподаватель</label>
+                    <select class="form-control" name="teacher" id="teacher"
+                    url="{% url 'search_retake:get_teachers' %}" disabled>
+                        <option value="_None">---------</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="course">Курс</label>
+                    <select name="course" id="course" class="form-control">
+                        <option value="_None">---------</option>
+                        <option value="1">1 Курс</option>
+                        <option value="2">2 Курс</option>
+                        <option value="3">3 Курс</option>
+                        <option value="4">4 Курс</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="group">Группа</label>
+                    <select class="form-control" name="group" id="group"
+                    url="{% url 'search_retake:get_groups' %}" disabled>
+                        <option value="_None">---------</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <div id="no_result" class="text-center">
+            <h5 class="h5">Пересдач нет</h5>
+        </div>
+        <table id="list_data" class="table table-bordered table-hover table-striped" data-toggle="table"
+        url="{% url 'search_retake:listing' %}">
+            <thead>
+                <tr>
+                    <th scope="col" data-field="discipline">Дисциплина</th>
+                    <th scope="col" data-field="teacher">Преподаватель</th>
+                    <th scope="col" data-field="group">Группа</th>
+                    <th scope="col" data-field="audience">Аудитория</th>
+                    <th scope="col" data-field="date">Дата</th>
+                </tr>
+            </thead>
+            <tbody id="listing">
+            </tbody>
+        </table>
+        <div class="row justify-content-center">
+            <nav aria-label="navigation">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <button class="btn btn-primary page-link" id="previous"><</button>
+                        </li>
+                        <li class="page-item pull-right">
+                            <button class="btn btn-primary page-link" id="next">></button>
+                        </li>
+                    </ul>
+                </nav>
+        </div>
+    </main>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'js/search-retake.js' %}"></script>
+{% endblock %}
