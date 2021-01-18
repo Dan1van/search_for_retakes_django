@@ -30,6 +30,7 @@ python manage.py runserver
 Адрес: http://127.0.0.1:8000/admin/
 
 Логин: **admin**
+
 Пароль: **admin**
 
 # English
@@ -64,4 +65,5 @@ Admin panel:
 Address: http://127.0.0.1:8000/admin/
 
 Login: **admin**
+
 Password: **admin**
