@@ -1,6 +1,6 @@
 # Search for retakes website
 
-
+![](project.gif)
 
 Веб-сервис разработанный в качестве курсовой работы для университета. За основу был взят веб-фреймворк [Django](https://www.djangoproject.com), а также [DRF](https://www.django-rest-framework.org). 
 
